@@ -5,6 +5,8 @@ import Colors from '../styles/Colors';
 import { navigationRef } from './RootNavigator';
 import Login from '../components/screens/Login';
 import Start from '../components/screens/Start';
+import OtpVerifyComponent from '../components/OtpVerifyComponent';
+import GettingStarted from '../components/GettingStarted';
 
 export default function Navigator() {
     const MyTheme = {
@@ -17,7 +19,6 @@ export default function Navigator() {
     const Stack = createStackNavigator();
   
     return (
-      // <NavigationContainer linking={linking} theme={MyTheme}>
       <NavigationContainer theme={MyTheme} ref={navigationRef}>
         <Stack.Navigator 
             screenOptions={{
@@ -25,8 +26,10 @@ export default function Navigator() {
             }}
             initialRouteName='Login'
             >
-            <Stack.Screen name='Login' component={Login} />
             <Stack.Screen name='Start' component={Start} />
+            <Stack.Screen name="GettingStarted" component={GettingStarted} />
+            <Stack.Screen name='Login' component={Login} />
+            <Stack.Screen name="OtpVerifyComponent" component={OtpVerifyComponent} />
         </Stack.Navigator>
       </NavigationContainer>
     );

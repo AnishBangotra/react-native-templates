@@ -13,11 +13,10 @@ import Logo from '../../../res/images/texlaLogo.svg';
 import Colors from '../../../styles/Colors';
 import { FontStyles, getName } from '../../../styles/fonts';
 import {
-    widthPercentageToDP as wp,
     heightPercentageToDP as hp,
   } from 'react-native-responsive-screen';
 
-const Login = ({props}) => {
+const Login = ({navigation}) => {
     const [enabled, setEnabled] = useState(false);
     const [phoneNum, setPhoneNum] = useState('');
     const [otpErrorMsg, setOTPErrorMsg] = useState('');
@@ -30,6 +29,15 @@ const Login = ({props}) => {
           setEnabled(true);
         }
       };
+
+    const getOtp = () => {
+        if (phoneNum.length === 10 && enabled) {
+          setOTPErrorMsg('')
+          navigation.navigate("OtpVerifyComponent", {mobNum: phoneNum});
+        } else {
+          setOTPErrorMsg('*This field must be at least 10 characters');
+        }
+    }
 
     return (
     <SafeAreaView style={styles.container}>
@@ -71,10 +79,11 @@ const Login = ({props}) => {
               keyboardType="numeric"
             />
           </View>
+          {otpErrorMsg.length > 0 ? <Text style={[styles.textStyle, {color: Colors.red, paddingTop: 2}]}>{otpErrorMsg}</Text> : ''}
         <Text style={[styles.textStyle, {paddingTop: 5, paddingBottom: 10}]}>
             By Continuing, I agree to the 
             <Text style={{color: Colors.primaryPurple}}> Terms of Use & Privacy Policy</Text></Text>
-        <TouchableOpacity style={styles.btnStyle} onPress={()=>alert("press")}>
+        <TouchableOpacity style={styles.btnStyle} onPress={()=>getOtp()}>
                 <Text 
                     allowFontScaling={false}
                     style={styles.btnText}>
@@ -93,7 +102,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.white,
         padding: 25,
-        // borderWidth: 1,
     },
     heading: {
         fontFamily: getName(FontStyles.bold),
@@ -103,7 +111,6 @@ const styles = StyleSheet.create({
         
     },
     headingView: {
-        // borderWidth: 1,
         marginTop: 10,
     },
     fixedView: {
@@ -144,10 +151,8 @@ const styles = StyleSheet.create({
         marginTop: 15,
         alignItems: 'center',
         flexDirection: 'row',
-        // borderWidth: 1,
     },
     inputView: { 
-        // borderWidth: 1,
         flexDirection: 'row',
         width: '100%',
       },
