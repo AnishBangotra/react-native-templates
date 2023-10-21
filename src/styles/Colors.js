@@ -93,6 +93,7 @@ export default {
     dimgrey: '#696969',
     paleGrey: '#f5f7fa',
     primaryPurple: "#5A189A",
+    lightpurple: "#7B2CBF",
     dodgerblue: '#1e90ff',
     firebrick: '#b22222',
     floralwhite: '#fffaf0',

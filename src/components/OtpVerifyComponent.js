@@ -66,9 +66,8 @@ const OtpVerifyComponent = ({navigation}) => {
            />
         ))}
           </View>
-        {otpErrorMsg.length > 0 ? <Text style={[styles.textStyle, {color: Colors.red, paddingTop: 2}]}>{otpErrorMsg}</Text> : ''}
         <Text style={[styles.textStyle, {paddingTop: 8}]}>Didn't reveive the code? 
-            <Text style={{color: Colors.primaryPurple}}> Resend OTP 0.10sec</Text></Text>
+        <Text style={{color: Colors.primaryPurple}}> Resend OTP 0.10sec</Text></Text>
     </SafeAreaView>  
   )
 }

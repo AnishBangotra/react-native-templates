@@ -41,7 +41,9 @@ const Login = ({navigation}) => {
 
     return (
     <SafeAreaView style={styles.container}>
-        <BackIcon />
+        <TouchableOpacity onPress={()=> navigation.goBack()}>
+          <BackIcon />
+        </TouchableOpacity>
         <View style={styles.titleView}>
             <Logo />
             <Text allowFontScaling={false} style={styles.titleText}>TexlaCulture</Text>
@@ -107,8 +109,7 @@ const styles = StyleSheet.create({
         fontFamily: getName(FontStyles.bold),
         fontSize: 28,
         fontWeight: 'bold',
-        color: Colors.black,
-        
+        color: Colors.black, 
     },
     headingView: {
         marginTop: 10,

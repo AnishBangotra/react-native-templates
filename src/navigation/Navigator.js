@@ -24,7 +24,7 @@ export default function Navigator() {
             screenOptions={{
                 headerShown: false,
             }}
-            initialRouteName='Login'
+            initialRouteName='Start'
             >
             <Stack.Screen name='Start' component={Start} />
             <Stack.Screen name="GettingStarted" component={GettingStarted} />
